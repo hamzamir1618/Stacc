@@ -29,9 +29,24 @@ variable "github_repo" {
 }
 
 variable "github_deploy_branch" {
-  description = "Only pushes to this branch may assume the deploy role."
+  description = "Branch the CD workflow deploys from (enforced by the workflow_run trigger)."
   type        = string
   default     = "main"
+}
+
+# This GitHub org customizes the OIDC subject claim to include numeric org and
+# repo IDs: repo:<owner>@<org_id>/<repo>@<repo_id>:... — so the trust policy
+# must match that form (see the existing exerra-deploy-* roles).
+variable "github_org_id" {
+  description = "Numeric GitHub org id used in the customized OIDC subject claim."
+  type        = string
+  default     = "226608819"
+}
+
+variable "github_repo_id" {
+  description = "Numeric GitHub repo id used in the customized OIDC subject claim."
+  type        = string
+  default     = "1408752472"
 }
 
 variable "cloudfront_price_class" {

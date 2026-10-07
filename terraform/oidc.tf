@@ -47,10 +47,17 @@ data "aws_iam_policy_document" "deploy_assume" {
       values   = ["sts.amazonaws.com"]
     }
 
+    # The org uses a customized OIDC subject claim (org-id/repo-id form), so
+    # match with StringLike on both the standard and customized subjects,
+    # scoped to this repo. The main-branch gate is enforced by the CD
+    # workflow's workflow_run trigger, mirroring the other exerra-deploy roles.
     condition {
-      test     = "StringEquals"
+      test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:${var.github_owner}/${var.github_repo}:ref:refs/heads/${var.github_deploy_branch}"]
+      values = [
+        "repo:${var.github_owner}/${var.github_repo}:*",
+        "repo:${var.github_owner}@${var.github_org_id}/${var.github_repo}@${var.github_repo_id}:*",
+      ]
     }
   }
 }
