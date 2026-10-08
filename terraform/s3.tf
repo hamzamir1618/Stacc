@@ -1,7 +1,10 @@
 # Private origin bucket. No public access, no website hosting — CloudFront
 # reaches it through Origin Access Control (OAC) only.
 resource "aws_s3_bucket" "site" {
-  bucket = var.site_domain
+  # Decoupled from the public domain (CloudFront uses OAC, not S3 website
+  # hosting, so the bucket name is arbitrary). Kept stable across the domain
+  # change so the existing bucket + its contents are not replaced.
+  bucket = var.bucket_name
 }
 
 resource "aws_s3_bucket_public_access_block" "site" {
