@@ -11,7 +11,13 @@ variable "root_domain" {
 }
 
 variable "site_domain" {
-  description = "Fully-qualified subdomain the site is served at."
+  description = "Apex domain the site is served at (www is added automatically). DNS is managed externally (Namecheap)."
+  type        = string
+  default     = "delistacc.com"
+}
+
+variable "bucket_name" {
+  description = "Origin S3 bucket name. Kept at the original value so the domain change does not replace the bucket."
   type        = string
   default     = "stacc-deli.meredianandco.com"
 }
