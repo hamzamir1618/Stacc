@@ -55,12 +55,12 @@ export function Visit() {
             <div className="paper">
               <div className="receipt">
                 <div className="c" style={{ fontWeight: 700, letterSpacing: '.2em' }}>STACC {loc.name.toUpperCase()}</div>
-                <div className="c" style={{ fontSize: 12, color: 'var(--ink-soft)' }}>{loc.area.toUpperCase()} &middot; SAMPLE DETAILS</div>
+                <div className="c" style={{ fontSize: 12, color: 'var(--ink-soft)' }}>{loc.area.toUpperCase()}</div>
                 <div className="dash" />
                 {week.map(([d, h]) => <div className="r" key={d}><span>{d}</span><span>{h}</span></div>)}
                 <div className="dash" />
-                <div className="r"><span>ADDRESS</span><span>{loc.address}</span></div>
-                <div className="r"><span>PHONE</span><span>{loc.phone}</span></div>
+                <div style={{ fontSize: 12, color: 'var(--ink-soft)' }}>ADDRESS</div>
+                <div>{loc.address.toUpperCase()}</div>
                 <div className="dash" />
                 <div className="c" style={{ fontWeight: 700 }}>THANK YOU, COME HUNGRY</div>
               </div>
@@ -72,7 +72,7 @@ export function Visit() {
             </button>
           </div>
         </div>
-        <div className="mapbox" role="img" aria-label={`Hand-drawn map to STACC ${loc.name} (placeholder)`}>
+        <div className="mapbox" role="img" aria-label={`Hand-drawn map to STACC ${loc.name}`}>
           <Doodle name="map" />
           <div className="sticker red pin">STACC</div>
           <div className="you">you &rarr;</div>

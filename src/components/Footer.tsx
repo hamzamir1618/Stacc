@@ -37,8 +37,8 @@ export function Footer() {
         ))}
       </nav>
       <div className="meta">
-        <span>STACC Deli</span>
-        <span>Sample menu, prices, photos and locations</span>
+        <span>&copy; {new Date().getFullYear()} STACC Deli</span>
+        <span>Islamabad &middot; Rawalpindi</span>
       </div>
     </footer>
   );

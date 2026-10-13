@@ -3,7 +3,7 @@ import { useGSAP } from '@gsap/react';
 import { Doodle } from '../components/Doodle';
 import { useCart } from '../lib/cart';
 import { peekProps, useRouter } from '../lib/router';
-import { CATEGORY_TAB, CATEGORY_TITLE, itemsIn, type Category } from '../data/menu';
+import { CATEGORY_TAB, CATEGORY_TITLE, itemsIn, money, type Category } from '../data/menu';
 import { drawTl, gsap, prime, rand, RM, ScrollTrigger, undrawTl, writeIn } from '../lib/motion';
 
 const CATS: Category[] = ['sandwich', 'pizza', 'drinks'];
@@ -97,7 +97,7 @@ export function MenuBoard({ scrollIn = false }: { scrollIn?: boolean }) {
             </div>
             <h3 className="marker name rough"><button className="namelink" onClick={e => go('item', e, it.id)}>{it.name}</button></h3>
             <p className="mono">{it.desc}</p>
-            <button className="btn" onClick={e => add(it.id, e.currentTarget)}>+ Add &middot; {it.price}</button>
+            <button className="btn" onClick={e => add(it.id, e.currentTarget)}>+ Add &middot; {money(it.price)}</button>
           </article>
         ))}
       </div>

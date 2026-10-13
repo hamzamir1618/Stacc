@@ -119,7 +119,7 @@ export function CartDrawer() {
             <button className="btn fill" onClick={placeOrder} style={{ justifyContent: 'center' }}>Place order &rarr;</button>
           </>
         )}
-        <p className="drawer-note">Sample prices. Ordering is not connected yet, so nothing is sent or charged.</p>
+        <p className="drawer-note">Pay at the counter when you collect your order.</p>
       </aside>
     </div>
   );

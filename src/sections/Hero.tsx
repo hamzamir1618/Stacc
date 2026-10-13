@@ -4,7 +4,7 @@ import { Chars } from '../components/Chars';
 import { Doodle } from '../components/Doodle';
 import { peekProps, useRouter } from '../lib/router';
 import { useCart } from '../lib/cart';
-import { ITEMS } from '../data/menu';
+import { ITEMS, money, num } from '../data/menu';
 import { chars, drawAll, drawTl, gsap, pathLength, prime, rand, RM, slap } from '../lib/motion';
 
 const item = ITEMS.verde;
@@ -75,7 +75,7 @@ export function Hero() {
           <h2 className="marker name rough" aria-label={item.name}><Chars text={item.name} /></h2>
           <p className="mono typer" aria-label={DESC}><Chars text={DESC} /></p>
           <div className="hero-ctas">
-            <button className="btn fill" onClick={e => add(item.id, e.currentTarget)}>+ Add &middot; {item.price}</button>
+            <button className="btn fill" onClick={e => add(item.id, e.currentTarget)}>+ Add &middot; {money(item.price)}</button>
             <button className="btn" onClick={e => go('menu', e)}>See the menu</button>
           </div>
           <Doodle name="arrow" className="d-arrow" />
@@ -86,7 +86,7 @@ export function Hero() {
               <img className="cut" src={item.img} alt="The Big Stacc: brisket focaccia sandwich" width={item.width} height={item.height} />
             </div>
           </div>
-          <div className="sticker red">{item.price}</div>
+          <div className="sticker red price-tag"><span className="rs">Rs</span>{num(item.price)}</div>
           <div className="hero-note">baked this morning<Doodle name="under" className="d-under" /></div>
         </div>
       </div>

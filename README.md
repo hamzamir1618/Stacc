@@ -13,7 +13,7 @@ npm run preview    # serves the production build
 
 ## Stack
 
-React 18, TypeScript, Vite, GSAP 3 with ScrollTrigger (`@gsap/react` for scoped cleanup). No router library: pages are switched in `App.tsx` so each switch can run its own full-screen wipe. The URL hash deep-links to a page: `#menu`, `#item/verde`, `#story`, `#locations`, `#visit/riverside`, `#confirm`.
+React 18, TypeScript, Vite, GSAP 3 with ScrollTrigger (`@gsap/react` for scoped cleanup). No router library: pages are switched in `App.tsx` so each switch can run its own full-screen wipe. The URL hash deep-links to a page: `#menu`, `#item/verde`, `#story`, `#locations`, `#visit/gol`, `#confirm`.
 
 ## Where things live
 
@@ -52,9 +52,9 @@ With `prefers-reduced-motion: reduce`, everything renders already drawn and page
 
 ## Placeholders to replace
 
-- Menu names, descriptions and prices in `src/data/menu.ts`.
+- Menu names, descriptions and prices (PKR) in `src/data/menu.ts` are dummy data.
 - Photos in `public/img/` are cut from reference images, not STACC's own food. Swap in transparent WebP cutouts at similar sizes.
 - Ingredients and allergens per item in `src/data/menu.ts`.
-- Shop names, addresses, phone numbers and hours in `src/data/locations.ts` (the map is a drawing, not a real map).
-- Story copy (`src/pages/Story.tsx`).
-- Ordering is front-end only. Placing an order sends nothing.
+- Shop addresses in `src/data/locations.ts` are real; opening hours are dummy data. The map is a drawing, not a real map.
+- Story copy (`src/pages/Story.tsx`) is dummy text.
+- Ordering is front-end only. Placing an order sends nothing (the site tells customers to pay at the counter).

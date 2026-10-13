@@ -4,7 +4,7 @@ import { Chars } from '../components/Chars';
 import { Doodle } from '../components/Doodle';
 import { useCart } from '../lib/cart';
 import { peekProps, useRouter } from '../lib/router';
-import type { MenuItem } from '../data/menu';
+import { money, type MenuItem } from '../data/menu';
 import { drawAll, gsap, markerIn, popper, RM, scrubDoodle, slapper, typer, writer } from '../lib/motion';
 
 interface Props {
@@ -48,7 +48,7 @@ export function SignatureRow({ item, title, longDesc, sticker, stickerColor = 'g
         <h3 className="marker name rough" aria-label={item.name}><Chars text={item.name} /></h3>
         <p className="mono typer" aria-label={longDesc}><Chars text={longDesc} /></p>
         <div className="row-cta">
-          <span className="price">{item.price}</span>
+          <span className="price">{money(item.price)}</span>
           <button className="btn" onClick={e => add(item.id, e.currentTarget)}>+ Add</button>
         </div>
       </div>

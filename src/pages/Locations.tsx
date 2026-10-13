@@ -79,7 +79,7 @@ export function Locations() {
       <div className="wrap page-head">
         <PageTitle text="Find a STACC" />
         <p className="mono loc-lead">
-          Sample locations. Pick the shop you'll collect from.
+          Three shops across Islamabad and Rawalpindi. Pick the one you'll collect from.
           {count > 0 && <> <button className="inline-link" onClick={() => setOpen(true)}>Back to your order ({count})</button></>}
         </p>
       </div>

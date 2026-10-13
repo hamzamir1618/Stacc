@@ -4,7 +4,7 @@ import { Chars } from '../components/Chars';
 import { Doodle } from '../components/Doodle';
 import { useCart } from '../lib/cart';
 import { peekProps, useRouter } from '../lib/router';
-import { CATEGORY_SINGULAR, ITEMS, isItemId, money } from '../data/menu';
+import { CATEGORY_SINGULAR, ITEMS, isItemId, money, num } from '../data/menu';
 import { chars, drawAll, drawTl, gsap, popper, prime, rand, RM, slap, writeIn, writer } from '../lib/motion';
 
 export function Item() {
@@ -71,7 +71,7 @@ export function Item() {
         <div className="detail-photo media">
           <Doodle name="circle" className="d-circle" />
           <img className="cut" src={item.img} alt={item.name} width={item.width} height={item.height} />
-          <div className={`sticker ${item.tagColor || 'red'}`}>{item.price}</div>
+          <div className={`sticker price-tag ${item.tagColor || 'red'}`}><span className="rs">Rs</span>{num(item.price)}</div>
           <div className="tape" style={{ left: '18%', top: '-4%', transform: 'rotate(-9deg)' }} />
         </div>
 
@@ -84,7 +84,7 @@ export function Item() {
           <ul className="chips" aria-label="Ingredients">
             {item.ingredients.map(i => <li className="chip" key={i}>{i}</li>)}
           </ul>
-          <p className="mono allergens">Allergens: to be confirmed. Ask at the counter.</p>
+          <p className="mono allergens">Allergies? Ask at the counter and we'll walk you through every ingredient.</p>
 
           <div className="buy">
             <div className="stepper" role="group" aria-label="Quantity">
@@ -113,7 +113,7 @@ export function Item() {
                 </div>
                 <h3 className="marker name rough">{p.name}</h3>
                 <p className="mono">{p.desc}</p>
-                <button className="btn" onClick={e => add(p.id, e.currentTarget)}>+ Add &middot; {p.price}</button>
+                <button className="btn" onClick={e => add(p.id, e.currentTarget)}>+ Add &middot; {money(p.price)}</button>
               </article>
             );
           })}

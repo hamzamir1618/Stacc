@@ -3,7 +3,7 @@ import { useGSAP } from '@gsap/react';
 import { Doodle } from '../components/Doodle';
 import { useCart } from '../lib/cart';
 import { peekProps, useRouter } from '../lib/router';
-import { itemsIn } from '../data/menu';
+import { itemsIn, money } from '../data/menu';
 import { drawAll, gsap, prime, RM } from '../lib/motion';
 
 const LONG: Record<string, string> = {
@@ -60,7 +60,7 @@ export function PizzaRun() {
             </div>
             <div className="label">
               <h3 className="marker name rough">{p.name}</h3>
-              <p className="mono">{LONG[p.id] ?? p.desc} {p.price}</p>
+              <p className="mono">{LONG[p.id] ?? p.desc} &middot; {money(p.price)}</p>
               <button className="btn" onClick={e => add(p.id, e.currentTarget)} style={{ justifySelf: 'start' }}>+ Add</button>
             </div>
           </div>

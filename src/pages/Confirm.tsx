@@ -143,7 +143,7 @@ export function Confirm() {
 
         <div className="confirm-side">
           <p className="hand confirm-note">see you at {lastOrder.time}!</p>
-          <p className="mono">This is a demo: no order was actually sent and nothing was charged.</p>
+          <p className="mono">Pay at the counter when you collect. We'll have it hot and stacked.</p>
           <div className="confirm-actions">
             <button className="btn fill" onClick={e => go('visit', e, loc.id)}>Directions to {loc.name}</button>
             <button className="btn" onClick={e => go('menu', e)}>Back to the menu</button>

@@ -1,5 +1,5 @@
-// Sample locations. Names, addresses, phone numbers and hours are placeholders.
-export type LocationId = 'downtown' | 'riverside' | 'market';
+// STACC Deli shops.
+export type LocationId = 'kohsar' | 'gol' | 'bahria';
 
 /** [open, close] in 24h "HH:MM", or null when closed that day. Index 0 = Sunday. */
 type Hours = ([string, string] | null)[];
@@ -9,19 +9,18 @@ export interface StaccLocation {
   name: string;
   area: string;
   address: string;
-  phone: string;
   hours: Hours;
   /** Pin position on the hand-drawn map, in its 200 x 150 drawing units. */
   pin: { x: number; y: number };
   tag?: string;
 }
 
-const WEEK: Hours = [['10:00', '15:00'], ['08:00', '18:00'], ['08:00', '18:00'], ['08:00', '18:00'], ['08:00', '18:00'], ['08:00', '19:00'], ['09:00', '17:00']];
+const WEEK: Hours = [['11:00', '22:00'], ['09:00', '22:00'], ['09:00', '22:00'], ['09:00', '22:00'], ['09:00', '22:00'], ['09:00', '23:00'], ['10:00', '23:00']];
 
 export const LOCATIONS: StaccLocation[] = [
-  { id: 'downtown', name: 'Downtown', area: 'The original', address: '[street], [city]', phone: '[phone number]', hours: WEEK, pin: { x: 128, y: 44 }, tag: 'NO.1' },
-  { id: 'riverside', name: 'Riverside', area: 'By the water', address: '[street], [city]', phone: '[phone number]', hours: [null, ...WEEK.slice(1)], pin: { x: 58, y: 98 } },
-  { id: 'market', name: 'Market Hall', area: 'Stall 14', address: '[street], [city]', phone: '[phone number]', hours: [['09:00', '14:00'], null, ['09:00', '16:00'], ['09:00', '16:00'], ['09:00', '16:00'], ['09:00', '17:00'], ['08:00', '17:00']], pin: { x: 168, y: 112 }, tag: 'NEW' },
+  { id: 'kohsar', name: 'Kohsar Market', area: 'Islamabad', address: 'Kohsar Market, Street 10, F-6/3, Islamabad', hours: WEEK, pin: { x: 62, y: 34 }, tag: 'NO.1' },
+  { id: 'gol', name: 'Gol Market', area: 'Islamabad', address: 'Gol Market, Street 3, F-7/3, Islamabad', hours: [['11:00', '22:00'], ...WEEK.slice(1)], pin: { x: 104, y: 52 } },
+  { id: 'bahria', name: 'Bahria Food Street', area: 'Rawalpindi', address: '68 High Street, Bahria Food Street, Bahria Intellectual Village, Rawalpindi', hours: [['12:00', '23:00'], ['12:00', '23:00'], ['12:00', '23:00'], ['12:00', '23:00'], ['12:00', '23:00'], ['12:00', '00:00'], ['12:00', '00:00']], pin: { x: 166, y: 116 }, tag: 'NEW' },
 ];
 
 export const DAYS = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
@@ -43,7 +42,8 @@ export function isOpen(loc: StaccLocation, now = new Date()) {
   const h = loc.hours[now.getDay()];
   if (!h) return false;
   const m = now.getHours() * 60 + now.getMinutes();
-  return m >= minutes(h[0]) && m < minutes(h[1]);
+  const close = h[1] === '00:00' ? 24 * 60 : minutes(h[1]);
+  return m >= minutes(h[0]) && m < close;
 }
 
 /** A loose hand-drawn route from "you" to a pin, in map units. */

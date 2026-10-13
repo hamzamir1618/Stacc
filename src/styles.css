@@ -391,6 +391,10 @@ svg.confetti { position: fixed; left: 0; top: 0; z-index: 97; width: 34px; heigh
 @media (max-width: 760px) { .loc-grid { grid-template-columns: 1fr; } .mapwrap { position: relative; top: 0; } }
 .visit-actions { margin-top: 28px; }
 
+/* rupee price stickers: small "Rs" over the number */
+.media .sticker.price-tag { font-size: clamp(17px, 1.9vw, 25px); }
+.sticker .rs { display: block; font-size: 0.55em; margin-bottom: 2px; }
+
 @media (pointer: coarse) { .cursor { display: none; } }
 @media (prefers-reduced-motion: reduce) {
   .cut, .slush-word .ch, .spin, .media:hover .cut { animation: none !important; }

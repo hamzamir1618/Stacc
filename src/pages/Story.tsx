@@ -57,8 +57,8 @@ export function Story() {
         </div>
         <div className="story-text">
           <p className="big reveal">We bake focaccia every morning, then stack it as high as it goes.</p>
-          <p className="reveal">Sample copy: replace this with the real STACC story. Who started it, where the dough recipe comes from, and what makes a sandwich worth crossing town for.</p>
-          <p className="reveal">Short paragraphs work best here. Each one writes itself in as you scroll.</p>
+          <p className="reveal">STACC started with one oven in Kohsar Market and a focaccia recipe we refused to stop tweaking. Slow-proofed dough, olive oil, sea salt, and a crust that crackles.</p>
+          <p className="reveal">Now there are three of us: Kohsar Market, Gol Market and Bahria Food Street. Same dough, same oven-hot crust, same rule: stack it high.</p>
           <Doodle name="squiggle" className="squig" />
         </div>
       </div>
